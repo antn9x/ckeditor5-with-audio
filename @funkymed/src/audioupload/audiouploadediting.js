@@ -70,7 +70,8 @@ export default class AudioUploadEditing extends Plugin {
 
                 return audioTypes.test(file.type);
             });
-
+            if (!data.targetRanges)
+                return;
             const ranges = data.targetRanges.map(viewRange => editor.editing.mapper.toModelRange(viewRange));
 
             editor.model.change(writer => {
